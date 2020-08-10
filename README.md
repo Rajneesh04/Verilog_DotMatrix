@@ -1,5 +1,5 @@
 # Verilog_DotMatrix
-
+WARNING: Watch in raw mode 
 Dependencies: Verilog, Xillinx(or any other simulator)
 
 This is a verolog based implementation of a general purpose controller which can be used to navigate in four different direction
