@@ -132,39 +132,6 @@ assign y00 = mat[0][0];   assign y01 = mat[0][1];   assign y02 = mat[0][2];   as
 assign y10 = mat[1][0];   assign y11 = mat[1][1];   assign y12 = mat[1][2];   assign y13 = mat[1][3];
 assign y20 = mat[2][0];   assign y21 = mat[2][1];   assign y22 = mat[2][2];   assign y23 = mat[2][3];
 assign y30 = mat[3][0];   assign y31 = mat[3][1];   assign y32 = mat[3][2];   assign y33 = mat[3][3];
+	
 endmodule
 
-
-//testbench module
-module testbench();
-
-reg reset,power,clk,up,down,right,left;
-wire y00,y01,y02,y03,
-     y10,y11,y12,y13,
-     y20,y21,y22,y23,
-     y30,y31,y32,y33;
-
-DOTMATRIX_VERSION2 test(reset,power,clk,up,down,right,left,
-                            y00,y01,y02,y03,
-                            y10,y11,y12,y13,
-                            y20,y21,y22,y23,
-                            y30,y31,y32,y33);
-initial begin
-      clk = 0;
-      forever #5 clk = ~ clk;
-end
-
-initial begin
-      power = 1'b0; up = 1'b0; down = 1'b0; right = 1'b0; left = 1'b0;
-      #18 power =1'b1; reset = 1'b1;
-      #20 reset = 1'b0;
-      #20 up = 1'b0; down = 1'b1; right = 1'b0; left = 1'b0;
-      #30 up = 1'b0; down = 1'b0; right = 1'b1; left = 1'b0;
-      #25 up = 1'b1; down = 1'b0; right = 1'b0; left = 1'b0;
-      #30 up = 1'b0; down = 1'b1; right = 1'b0; left = 1'b0;
-      #25 up = 1'b0; down = 1'b1; right = 1'b1; left = 1'b0;
-      #30 up = 1'b0; down = 1'b0; right = 1'b0; left = 1'b1;
-      #250 $finish;
-end
-
-endmodule
